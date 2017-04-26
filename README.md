@@ -1,6 +1,6 @@
 # npmtest-react-dropzone
 
-#### test coverage for  [react-dropzone (v3.12.4)](https://github.com/okonet/react-dropzone)  [![npm package](https://img.shields.io/npm/v/npmtest-react-dropzone.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-react-dropzone) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-react-dropzone.svg)](https://travis-ci.org/npmtest/node-npmtest-react-dropzone)
+#### basic test coverage for  [react-dropzone (v3.13.0)](https://github.com/okonet/react-dropzone)  [![npm package](https://img.shields.io/npm/v/npmtest-react-dropzone.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-react-dropzone) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-react-dropzone.svg)](https://travis-ci.org/npmtest/node-npmtest-react-dropzone)
 
 #### Simple HTML5 drag-drop zone with React.js
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-react-dropzone/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-react-dropzone/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-react-dropzone/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-react-dropzone/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-react-dropzone/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-react-dropzone/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-react-dropzone/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-react-dropzone/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-react-dropzone/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-react-dropzone/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-react-dropzone/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-react-dropzone/build/coverage.html/index.html)
 
@@ -74,6 +74,7 @@
         "babel-preset-react": "^6.3.13",
         "babel-preset-stage-0": "^6.3.13",
         "babel-register": "^6.9.0",
+        "css-loader": "^0.26.1",
         "cz-conventional-changelog": "^1.2.0",
         "enzyme": "^2.6.0",
         "eslint": "^3.11.0",
@@ -81,24 +82,29 @@
         "eslint-plugin-import": "^2.2.0",
         "eslint-plugin-jsx-a11y": "^2.2.3",
         "eslint-plugin-react": "^6.7.1",
+        "imagemin-cli": "^3.0.0",
+        "imagemin-pngquant": "^5.0.0",
         "jest": "^18.0.0",
         "lint-staged": "^3.2.1",
+        "markdownlint-cli": "^0.2.0",
         "npm-check": "^5.2.1",
         "pre-commit": "^1.1.3",
         "react": "^15.4.1",
         "react-addons-test-utils": "^15.4.1",
         "react-dom": "^15.4.1",
+        "react-styleguidist": "^5.0.6",
         "rimraf": "^2.5.2",
         "semantic-release": "^6.3.2",
         "sinon": "^1.17.4",
+        "style-loader": "^0.13.1",
         "webpack": "^1.13.1"
     },
     "directories": {},
     "dist": {
-        "shasum": "66c45f12d1711d303a17c09ab195306a15ee4374",
-        "tarball": "https://registry.npmjs.org/react-dropzone/-/react-dropzone-3.12.4.tgz"
+        "shasum": "a6a438df289971f909d498583d67ab0c4f214b17",
+        "tarball": "https://registry.npmjs.org/react-dropzone/-/react-dropzone-3.13.0.tgz"
     },
-    "gitHead": "4e127018acd68b92c2a2862f66caa0bc3a3f9244",
+    "gitHead": "08be46c3d7ede275ae375738e8eb469e269347e5",
     "homepage": "https://github.com/okonet/react-dropzone",
     "jest": {
         "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"
@@ -115,6 +121,10 @@
         "*.js": [
             "eslint:fix",
             "git:add"
+        ],
+        "*.{svg,png}": [
+            "imagemin",
+            "git add"
         ]
     },
     "main": "dist/index.js",
@@ -146,12 +156,17 @@
         "eslint:fix": "eslint --fix",
         "eslint:src": "eslint ./src ./*.js",
         "git:add": "git add",
+        "imagemin": "imagemin --out-dir=logo --plugin=pngquant --plugin=svgo",
         "lint-staged": "lint-staged",
+        "logo": "cd logo && sketchtool export artboards logo.sketch",
         "prepublish": "NODE_ENV=production npm run build && jest",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+        "start": "styleguidist server",
+        "styleguide": "styleguidist build",
         "test": "npm run eslint:src && jest --coverage"
     },
-    "version": "3.12.4"
+    "version": "3.13.0",
+    "bin": {}
 }
 ```
 
